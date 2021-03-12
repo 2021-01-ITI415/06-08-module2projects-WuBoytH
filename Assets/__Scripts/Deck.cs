@@ -271,7 +271,7 @@ public class Deck : MonoBehaviour {
 	 	while (oCards.Count > 0) 
 	 	{
 	 		// find a random card, add it to shuffled list and remove from original deck
-	 		ndx = Random.Range(0,oCards.Count);
+	 		ndx = Random.Range(0, oCards.Count);
 	 		tCards.Add(oCards[ndx]);
 	 		oCards.RemoveAt(ndx);
 	 	}
@@ -283,6 +283,5 @@ public class Deck : MonoBehaviour {
 
 
 	 }
-
 
 } // Deck class
