@@ -437,10 +437,10 @@ GameObject:
   - component: {fileID: 827460512}
   - component: {fileID: 827460510}
   - component: {fileID: 827460509}
-  - component: {fileID: 827460514}
-  - component: {fileID: 827460511}
   - component: {fileID: 827460516}
   - component: {fileID: 827460515}
+  - component: {fileID: 827460511}
+  - component: {fileID: 827460514}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -473,13 +473,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 827460508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5c85bbdfa7356498a49a35d715a908, type: 3}
+  m_Script: {fileID: 11500000, guid: 9337e694e92276f4aa51cdd6a6b400fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xmlr:
     xmlText: 
   multiplier: {x: 0, y: 0}
-  slotDefs: []
+  SlotDefGolfs: []
   drawPile:
     x: 0
     y: 0
@@ -505,6 +505,7 @@ MonoBehaviour:
   - Row1
   - Row2
   - Row3
+  - Row4
   - Discard
   - Draw
 --- !u!20 &827460512
@@ -573,7 +574,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 827460508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b69c28581428da469438d7d5901b8ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 482ef07f1e3d54544a23387591297b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   suitClub: {fileID: 21300000, guid: f2e3abd22e9ae4d17ab5c0659ff3e024, type: 3}
@@ -594,22 +595,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee100e0d0a1c04759a5a7537cf5e8752, type: 3}
   - {fileID: 21300000, guid: ef50d4f09a2b3425fbbdb8ad5f8957b0, type: 3}
   rankSprites:
-  - {fileID: 21300002, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300004, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300006, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300008, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300010, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300012, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300014, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300016, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300018, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300020, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300022, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300024, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300026, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300028, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300030, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  - {fileID: 21300032, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardBack: {fileID: 21300000, guid: a8185ed8d47594bb8a3b8e2d9233f769, type: 3}
   cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
   cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
@@ -671,102 +668,6 @@ MonoBehaviour:
   chain: 0
   scoreRun: 0
   score: 0
---- !u!1 &1033296855
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1033296859}
-  - component: {fileID: 1033296858}
-  - component: {fileID: 1033296857}
-  - component: {fileID: 1033296856}
-  m_Layer: 0
-  m_Name: ProspectorBackground
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &1033296856
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033296855}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1033296857
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033296855}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c8ca95433cc67409b8b7e8c5fed52cce, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1033296858
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033296855}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1033296859
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033296855}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 26.667, y: 20, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062804525
 GameObject:
   m_ObjectHideFlags: 0

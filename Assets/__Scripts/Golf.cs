@@ -22,7 +22,7 @@ public class Golf : MonoBehaviour {
 	public Text gameOverText, roundResultText, highScoreText;
 
 	[Header("Set Dynamically")]
-	public Deck deck;
+	public DeckGolf deck;
 	public LayoutGolf layout;
 	public List<CardGolf> drawPile;
 	public Transform layoutAnchor;
@@ -64,16 +64,18 @@ public class Golf : MonoBehaviour {
 
 	void Start() {
 		Scoreboard.S.score = ScoreManager.SCORE;
-		deck = GetComponent<Deck>();
+		deck = GetComponent<DeckGolf>();
 		deck.InitDeck(deckXML.text);
-		Deck.Shuffle(ref deck.cards);
+		DeckGolf.Shuffle(ref deck.cards);
 		layout = GetComponent<LayoutGolf>();
-		layout.ReadLayout(layoutXML.text);
+		layout.ReadLayoutGolf(layoutXML.text);
+		print("Cards in deck: " + deck.cards.Count as string);
 		drawPile = ConvertListCardsToListCardGolfs(deck.cards);
+		print("Draw Pile: " + drawPile.Count as string);
 		LayoutGame();
 	}
 
-	List<CardGolf> ConvertListCardsToListCardGolfs(List<Card> lCD) {
+	List<CardGolf> ConvertListCardsToListCardGolfs(List<CardGolf> lCD) {
 		List<CardGolf> lCP = new List<CardGolf>();
 		CardGolf tCP;
 		foreach (Card tCD in lCD)
@@ -268,7 +270,7 @@ public class Golf : MonoBehaviour {
 	}
 
 	void ReloadLevel() {
-		SceneManager.LoadScene("__Golf_Scene_0");
+		SceneManager.LoadScene("__Golf_Scene_1");
 	}
 	
 	public bool AdjacentRank(CardGolf c0, CardGolf c1) {
@@ -276,8 +278,6 @@ public class Golf : MonoBehaviour {
 		if (Mathf.Abs(c0.rank - c1.rank) == 1) {
 			return (true); 
 		}
-		if (c0.rank == 1 && c1.rank == 13) return (true);
-		if (c0.rank == 13 && c1.rank == 1) return (true);
 		return (false);
 	}
 

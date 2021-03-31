@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Deck : MonoBehaviour {
+public class DeckGolf : MonoBehaviour {
 
 [Header("Set in Inspector")]
 	//Suits
@@ -29,14 +29,14 @@ public class Deck : MonoBehaviour {
 	public PT_XMLReader					xmlr;
 	// add from p 569
 	public List<string>					cardNames;
-	public List<Card>					cards;
+	public List<CardGolf>					cards;
 	public List<Decorator>				decorators;
 	public List<CardDefinition>			cardDefs;
 	public Transform					deckAnchor;
 	public Dictionary<string, Sprite>	dictSuits;
 
 
-	// called by Prospector when it is ready
+	// called by Golf when it is ready
 	public void InitDeck(string deckXMLText) {
 		// from page 576
 		if( GameObject.Find("_Deck") == null) {
@@ -149,7 +149,7 @@ public class Deck : MonoBehaviour {
 		}
 		
 		// list of all Cards
-		cards = new List<Card>();
+		cards = new List<CardGolf>();
 		
 		// temp variables
 		Sprite tS = null;
@@ -159,7 +159,7 @@ public class Deck : MonoBehaviour {
 		for (int i=0; i<cardNames.Count; i++) {
 			GameObject cgo = Instantiate(prefabCard) as GameObject;
 			cgo.transform.parent = deckAnchor;
-			Card card = cgo.GetComponent<Card>();
+			CardGolf card = cgo.GetComponent<CardGolf>();
 			
 			cgo.transform.localPosition = new Vector3(i%13*3, i/13*4, 0);
 			
@@ -262,9 +262,9 @@ public class Deck : MonoBehaviour {
 		return (null);  // couldn't find the sprite (should never reach this line)
 	 }// getFace 
 
-	 static public void Shuffle(ref List<Card> oCards)
+	 static public void Shuffle(ref List<CardGolf> oCards)
 	 {
-	 	List<Card> tCards = new List<Card>();
+	 	List<CardGolf> tCards = new List<CardGolf>();
 
 	 	int ndx;   // which card to move
 

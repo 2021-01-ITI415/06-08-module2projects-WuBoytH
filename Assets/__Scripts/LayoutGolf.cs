@@ -27,7 +27,7 @@ public class LayoutGolf : MonoBehaviour
     public SlotDefGolf discardPile;
     public string[] sortingLayerNames = new string[]{ "Row0", "Row1", "Row2", "Row3", "Row4", "Discard", "Draw" };
 
-    public void ReadLayout(string xmlText) {
+    public void ReadLayoutGolf(string xmlText) {
         xmlr = new PT_XMLReader();
         xmlr.Parse(xmlText);
         xml = xmlr.xml["xml"][0];
@@ -74,6 +74,8 @@ public class LayoutGolf : MonoBehaviour
                     discardPile = tSD;
                     break;
             }
+            print("Set card " + i as string + "!");
         }
+        print("SlotDefGolfs Count: " + SlotDefGolfs.Count as string);
     }
 }
