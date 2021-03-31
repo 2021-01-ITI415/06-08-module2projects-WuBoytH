@@ -29,7 +29,6 @@ public class Golf : MonoBehaviour {
 	public CardGolf target;
 	public List<CardGolf> table;
 	public List<CardGolf> discardPile;
-	public FloatingScore fsRun;
 
 	void Awake()
 	{
@@ -42,7 +41,7 @@ public class Golf : MonoBehaviour {
 		if (go != null) {
 			highScoreText = go.GetComponent<Text>();
 		}
-		int highScore = ScoreManager.HIGH_SCORE;
+		int highScore = ScoreManagerGolf.HIGH_SCORE;
 		string hScore = "High Score: " + Utils.AddCommasToNumber(highScore);
 		go.GetComponent<Text>().text = hScore;
 		go = GameObject.Find("GameOver");
@@ -63,7 +62,7 @@ public class Golf : MonoBehaviour {
 	}
 
 	void Start() {
-		Scoreboard.S.score = ScoreManager.SCORE;
+		ScoreboardGolf.S.score = ScoreManagerGolf.SCORE;
 		deck = GetComponent<DeckGolf>();
 		deck.InitDeck(deckXML.text);
 		DeckGolf.Shuffle(ref deck.cards);
@@ -206,8 +205,7 @@ public class Golf : MonoBehaviour {
 				MoveToDiscard(target);
 				MoveToTarget(Draw());
 				UpdateDrawPile();
-				ScoreManager.EVENT(eScoreEvent.draw, false);
-				FloatingScoreHandler(eScoreEvent.draw);
+				ScoreManagerGolf.EVENT(eScoreEventGolf.draw);
 				break;
 
 			case eCardStateGolf.tableau:
@@ -224,8 +222,7 @@ public class Golf : MonoBehaviour {
 				table.Remove(cd);
 				MoveToTarget(cd);
 				SetTableauFaces();
-				ScoreManager.EVENT(eScoreEvent.mine, tempCardRef.isGold);
-				FloatingScoreHandler(eScoreEvent.mine);
+				ScoreManagerGolf.EVENT(eScoreEventGolf.putt);
 				break;
 		}
 		CheckForGameOver();
@@ -248,25 +245,22 @@ public class Golf : MonoBehaviour {
 	}
 
 	void GameOver(bool won) {
-		int score = ScoreManager.SCORE;
-		if (fsRun != null) score += fsRun.score;
+		int score = ScoreManagerGolf.SCORE;
 		if (won) {
 			gameOverText.text = "Round Over";
 			roundResultText.text = "You won this round! \nRound Score: " + score;
 			ShowResultsUI(true);
-			ScoreManager.EVENT(eScoreEvent.gameWin, false);
-			FloatingScoreHandler(eScoreEvent.gameWin);
+			ScoreManagerGolf.EVENT(eScoreEventGolf.gameWin);
 		} else {
 			gameOverText.text = "Game Over";
-			if (ScoreManager.HIGH_SCORE <= score) {
+			if (ScoreManagerGolf.HIGH_SCORE <= score) {
 				string str = "You got the high score!\nHigh score: " + score;
 				roundResultText.text = str;
 			} else {
 				roundResultText.text = "Your final score was: " + score;
 			}
 			ShowResultsUI(true);
-			ScoreManager.EVENT(eScoreEvent.gameLoss, false);
-			FloatingScoreHandler(eScoreEvent.gameLoss);
+			ScoreManagerGolf.EVENT(eScoreEventGolf.gameLoss);
 		}
 		Invoke("ReloadLevel", reloadDelay);
 	}
@@ -281,44 +275,5 @@ public class Golf : MonoBehaviour {
 			return (true); 
 		}
 		return (false);
-	}
-
-	void FloatingScoreHandler(eScoreEvent evt) {
-		List<Vector2> fsPts;
-		switch (evt) {
-			case eScoreEvent.draw:
-			case eScoreEvent.gameWin:
-			case eScoreEvent.gameLoss:
-				if (fsRun != null) {
-					fsPts = new List<Vector2>();
-					fsPts.Add(fsPosRun);
-					fsPts.Add(fsPosMid2);
-					fsPts.Add(fsPosEnd);
-					fsRun.reportFinishTo = Scoreboard.S.gameObject;
-					fsRun.Init(fsPts, 0, 1);
-					fsRun.fontSizes = new List<float>(new float[] { 28, 36, 4 });
-					fsRun = null;
-				}
-				break;
-			case eScoreEvent.mine:
-				FloatingScore fs;
-				Vector2 p0 = Input.mousePosition;
-				p0.x /= Screen.width;
-				p0.y /= Screen.height;
-				fsPts = new List<Vector2>();
-				fsPts.Add(p0);
-				fsPts.Add(fsPosMid);
-				fsPts.Add(fsPosRun);
-				fs = Scoreboard.S.CreateFloatingScore(ScoreManager.CHAIN, fsPts);
-				fs.fontSizes = new List<float>(new float[] { 4, 50, 28 });
-				if (fsRun == null) {
-					fsRun = fs;
-					fsRun.reportFinishTo = null;
-				}
-				else {
-					fs.reportFinishTo = fsRun.gameObject;
-				}
-				break;
-		}
 	}
 }
