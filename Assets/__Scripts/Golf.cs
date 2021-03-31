@@ -103,6 +103,7 @@ public class Golf : MonoBehaviour {
 		foreach (SlotDefGolf tSD in layout.SlotDefGolfs) {
 			cp = Draw();
 			cp.faceUp = tSD.faceUp;
+			cp.canClick = tSD.canClick;
 			cp.transform.parent = layoutAnchor;
 			cp.transform.localPosition = new Vector3(
 				layout.multiplier.x * tSD.x,
@@ -138,13 +139,13 @@ public class Golf : MonoBehaviour {
 
 	void SetTableauFaces() { 
 		foreach( CardGolf cd in table ) {
-			bool faceUp = true;
+			bool canClick = true;
 			foreach ( CardGolf cover in cd.hiddenBy ) {
 				if (cover.state == eCardStateGolf.tableau) {
-					faceUp = false;
+					canClick = false;
 				}
 			}
-			cd.faceUp = faceUp;
+			cd.canClick = canClick;
 		}
 	}
 
@@ -196,6 +197,7 @@ public class Golf : MonoBehaviour {
 	}
 
 	public void CardClicked(CardGolf cd) { 
+		print(cd.canClick);
 		switch (cd.state) {
 			case eCardStateGolf.target:
 				break;
@@ -211,7 +213,7 @@ public class Golf : MonoBehaviour {
 			case eCardStateGolf.tableau:
 				bool validMatch = true;
 				CardGolf tempCardRef = target;
-				if (!cd.faceUp) {
+				if (!cd.canClick) {
 					validMatch = false;
 				}
 				if (!AdjacentRank(cd, target)) {

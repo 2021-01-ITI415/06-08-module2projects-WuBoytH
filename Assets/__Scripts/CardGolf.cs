@@ -16,6 +16,7 @@ public class CardGolf : Card
     public eCardStateGolf state = eCardStateGolf.drawpile;
     public List<CardGolf> hiddenBy = new List<CardGolf>();
     public int layoutID;
+    public bool canClick;
     public SlotDefGolf slotDefGolf;
 
     override public void OnMouseUpAsButton() {

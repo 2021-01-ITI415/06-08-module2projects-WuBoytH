@@ -7,6 +7,7 @@ public class SlotDefGolf {
     public float x;
     public float y;
     public bool faceUp = false;
+    public bool canClick;
     public string layerName = "Default";
     public int layerID = 0;
     public int id;
@@ -61,6 +62,11 @@ public class LayoutGolf : MonoBehaviour
                             tSD.hiddenBy.Add(int.Parse(s));
                             print("Added " + int.Parse(s) as string + " to hiddenby");
                         }
+                    }
+                    if (slotsX[i].HasAtt("canclick")) {
+                        print("Has canclick attr");
+                        tSD.canClick = (slotsX[i].att("canclick") == "1");
+                        print(i + " can click set to " + tSD.canClick as string);
                     }
                     SlotDefGolfs.Add(tSD);
                     break;
