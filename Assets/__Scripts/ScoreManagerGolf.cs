@@ -16,8 +16,7 @@ public class ScoreManagerGolf : MonoBehaviour {
 
     [Header("Set Dynamically")]
     public int chain = 0;
-    public int scoreRun = 0;
-    public int score = 0;
+    public int score = 19;
     public int round = 0;
 
     void Awake() { 
@@ -45,22 +44,15 @@ public class ScoreManagerGolf : MonoBehaviour {
     void Event (eScoreEventGolf evt) { 
         switch (evt) {
             case eScoreEventGolf.draw:
-            case eScoreEventGolf.gameWin:
-            case eScoreEventGolf.gameLoss:
-                score += scoreRun;
-                scoreRun = 0;
+                score += 1;
                 break; 
 
             case eScoreEventGolf.putt:
-                if (goldCard)
-                { 
-                    chain += 2;
-                } else
-                {
-                    chain++;
-                }
-                
-                scoreRun += chain;
+                score -= 1;
+                break;
+            
+            case eScoreEventGolf.gameWin:
+            case eScoreEventGolf.gameLoss:
                 break;
         }
         switch (evt) {
@@ -84,7 +76,5 @@ public class ScoreManagerGolf : MonoBehaviour {
         }
     }
 
-    static public int CHAIN { get { return S.chain; } }
     static public int SCORE { get { return S.score; } }
-    static public int SCORE_RUN { get { return S.scoreRun; } }
 }
