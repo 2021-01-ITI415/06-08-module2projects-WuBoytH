@@ -7,7 +7,7 @@ public class ScoreboardGolf : MonoBehaviour {
     public static ScoreboardGolf S;
 
     [Header("Set Dynamically")]
-    [SerializeField] private int _score = 0;
+    [SerializeField] private int _score = ScoreManagerGolf.SCORE;
     [SerializeField] private string _scoreString;
 
     private Transform canvasTrans;

@@ -376,11 +376,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 547497728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254496dbfb4cedd4b9a72514635fc340, type: 3}
+  m_Script: {fileID: 11500000, guid: 719df512a6eade345a7e546f8c7ca51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabFloatingScore: {fileID: 5722613145076990468, guid: 5d8ca67e7b47fe448bce6d15bd2b69e0,
-    type: 3}
   _score: 0
   _scoreString: 
 --- !u!114 &547497731
@@ -437,10 +435,10 @@ GameObject:
   - component: {fileID: 827460512}
   - component: {fileID: 827460510}
   - component: {fileID: 827460509}
-  - component: {fileID: 827460516}
   - component: {fileID: 827460515}
   - component: {fileID: 827460511}
   - component: {fileID: 827460514}
+  - component: {fileID: 827460516}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -658,7 +656,6 @@ MonoBehaviour:
   target: {fileID: 0}
   table: []
   discardPile: []
-  fsRun: {fileID: 0}
 --- !u!114 &827460516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,12 +665,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 827460508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c10e1e796778d4b8fefb4553ad07e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 700932c6d189d4d4eabad4e689ab181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chain: 0
-  scoreRun: 0
   score: 0
+  round: 0
 --- !u!1 &1062804525
 GameObject:
   m_ObjectHideFlags: 0
