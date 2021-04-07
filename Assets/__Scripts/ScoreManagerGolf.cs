@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum eScoreEventGolf { 
     draw,
@@ -13,11 +14,12 @@ public class ScoreManagerGolf : MonoBehaviour {
 
     static public int SCORE_FROM_PREV_ROUND = 0;
     static public int HIGH_SCORE = 0;
+    static public int ROUND = 0;
 
     [Header("Set Dynamically")]
     public int chain = 0;
+    public int scoreRun = 19;
     public int score = 19;
-    public int round = 0;
 
     void Awake() { 
         if (S == null) {
@@ -44,30 +46,37 @@ public class ScoreManagerGolf : MonoBehaviour {
     void Event (eScoreEventGolf evt) { 
         switch (evt) {
             case eScoreEventGolf.draw:
-                score += 1;
+                scoreRun += 1;
                 break; 
 
             case eScoreEventGolf.putt:
-                score -= 1;
+                scoreRun -= 1;
                 break;
             
             case eScoreEventGolf.gameWin:
             case eScoreEventGolf.gameLoss:
+                score += scoreRun;
+                scoreRun = 0;
+                ROUND += 1;
                 break;
         }
         switch (evt) {
             case eScoreEventGolf.gameWin:
-                SCORE_FROM_PREV_ROUND = score;
+                if (ROUND < 9) {
+                    SCORE_FROM_PREV_ROUND = score;
+                }
                 print("You won this round! Round score: " + score);
                 break;
 
             case eScoreEventGolf.gameLoss:
-                if (HIGH_SCORE <= score) {
-                    print(" You got the high score! High Score: " + score);
-                    HIGH_SCORE = score;
-                    PlayerPrefs.SetInt("GolfHighScore", score);
+                if (ROUND == 9) {
+                    if (HIGH_SCORE >= score) {
+                        print(" You got the high score! High Score: " + score);
+                        HIGH_SCORE = score;
+                        PlayerPrefs.SetInt("GolfHighScore", score);
+                    }
                 } else {
-                    print("Your final score for the game was: " + score);
+                    print("Your score for Round " + ROUND + " was: " + score);
                 }
                 break;
 
@@ -76,5 +85,7 @@ public class ScoreManagerGolf : MonoBehaviour {
         }
     }
 
+    static public int CHAIN { get { return S.chain; } }
     static public int SCORE { get { return S.score; } }
+    static public int SCORE_RUN { get { return S.scoreRun; } }
 }

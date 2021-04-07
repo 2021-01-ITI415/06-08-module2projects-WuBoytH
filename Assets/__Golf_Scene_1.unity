@@ -218,7 +218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.625}
   m_AnchorMax: {x: 0.5, y: 0.625}
-  m_AnchoredPosition: {x: 0, y: 192.2}
+  m_AnchoredPosition: {x: 0, y: 418.21}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &80929592
@@ -379,6 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719df512a6eade345a7e546f8c7ca51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabFloatingScore: {fileID: 5722613145076990468, guid: d733476b794a227408cb49389d37c797,
+    type: 3}
   _score: 0
   _scoreString: 
 --- !u!114 &547497731
@@ -649,6 +651,7 @@ MonoBehaviour:
   gameOverText: {fileID: 80929592}
   roundResultText: {fileID: 1357457791}
   highScoreText: {fileID: 1198967168}
+  round: 0
   deck: {fileID: 0}
   layout: {fileID: 0}
   drawPile: []
@@ -656,6 +659,7 @@ MonoBehaviour:
   target: {fileID: 0}
   table: []
   discardPile: []
+  fsRun: {fileID: 0}
 --- !u!114 &827460516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,8 +673,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chain: 0
+  scoreRun: 0
   score: 0
-  round: 0
 --- !u!1 &1062804525
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.625}
   m_AnchorMax: {x: 0.5, y: 0.625}
-  m_AnchoredPosition: {x: 0, y: 106.34}
+  m_AnchoredPosition: {x: 0, y: 161.3}
   m_SizeDelta: {x: 1200, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1357457791

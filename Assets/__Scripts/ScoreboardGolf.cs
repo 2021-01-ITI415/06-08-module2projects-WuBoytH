@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class ScoreboardGolf : MonoBehaviour {
     public static ScoreboardGolf S;
 
+    [Header("Set in Inspector")]
+    public GameObject prefabFloatingScore;
+
     [Header("Set Dynamically")]
-    [SerializeField] private int _score = ScoreManagerGolf.SCORE;
+    [SerializeField] private int _score = 19;
     [SerializeField] private string _scoreString;
 
     private Transform canvasTrans;
@@ -31,6 +34,20 @@ public class ScoreboardGolf : MonoBehaviour {
             _scoreString = value;
             GetComponent<Text>().text = _scoreString;
         }
+    }
+
+    public void FSCallback(FloatingScore fs) {
+        score += fs.score;
+    }
+
+    public FloatingScoreGolf CreateFloatingScore(int amt, List<Vector2> pts) {
+        GameObject go = Instantiate<GameObject>(prefabFloatingScore);
+        go.transform.SetParent(canvasTrans);
+        FloatingScoreGolf fs = go.GetComponent<FloatingScoreGolf>();
+        fs.score = amt;
+        fs.reportFinishTo = this.gameObject;
+        fs.Init(pts);
+        return (fs);
     }
 
     void Awake() { 
