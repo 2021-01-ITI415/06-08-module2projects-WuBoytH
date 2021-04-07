@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 public class Golf : MonoBehaviour {
 	static public Golf S;
+	static public int round = 0;
 
 	[Header("Set in Inspector")]
 	public TextAsset deckXML;
@@ -20,7 +21,6 @@ public class Golf : MonoBehaviour {
 	public Vector2 fsPosEnd = new Vector2(0.5f, 0.95f);
 	public float reloadDelay = 2f;
 	public Text gameOverText, roundResultText, highScoreText;
-	public int round = 0;
 
 	[Header("Set Dynamically")]
 	public DeckGolf deck;
@@ -70,9 +70,7 @@ public class Golf : MonoBehaviour {
 		DeckGolf.Shuffle(ref deck.cards);
 		layout = GetComponent<LayoutGolf>();
 		layout.ReadLayoutGolf(layoutXML.text);
-		print("Cards in deck: " + deck.cards.Count as string);
 		drawPile = ConvertListCardsToListCardGolfs(deck.cards);
-		print("Draw Pile: " + drawPile.Count as string);
 		LayoutGame();
 	}
 
@@ -197,8 +195,7 @@ public class Golf : MonoBehaviour {
 		}
 	}
 
-	public void CardClicked(CardGolf cd) { 
-		print(cd.canClick);
+	public void CardClicked(CardGolf cd) {
 		switch (cd.state) {
 			case eCardStateGolf.target:
 				break;
@@ -260,7 +257,7 @@ public class Golf : MonoBehaviour {
 		} else {
 			gameOverText.text = "Game Over";
 			if (round == 9) {
-				if (ScoreManagerGolf.HIGH_SCORE <= score) {
+				if (ScoreManagerGolf.HIGH_SCORE >= score) {
 					string str = "You got the high score!\nHigh score: " + score;
 					roundResultText.text = str;
 				}

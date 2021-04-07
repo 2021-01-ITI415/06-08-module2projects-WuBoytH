@@ -60,13 +60,10 @@ public class LayoutGolf : MonoBehaviour
                         string[] hiding = slotsX[i].att("hiddenby").Split(',');
                         foreach (string s in hiding) {
                             tSD.hiddenBy.Add(int.Parse(s));
-                            print("Added " + int.Parse(s) as string + " to hiddenby");
                         }
                     }
                     if (slotsX[i].HasAtt("canclick")) {
-                        print("Has canclick attr");
                         tSD.canClick = (slotsX[i].att("canclick") == "1");
-                        print(i + " can click set to " + tSD.canClick as string);
                     }
                     SlotDefGolfs.Add(tSD);
                     break;
@@ -80,8 +77,6 @@ public class LayoutGolf : MonoBehaviour
                     discardPile = tSD;
                     break;
             }
-            print("Set card " + i as string + "!");
         }
-        print("SlotDefGolfs Count: " + SlotDefGolfs.Count as string);
     }
 }
